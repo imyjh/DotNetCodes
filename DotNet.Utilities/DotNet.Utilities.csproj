@@ -133,12 +133,13 @@
     <Compile Include="上传下载\UpLoadFiles.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="导出Excel\DataToExcel.cs" />
-    <Compile Include="导出Excel\ExcelHelper.cs" />
-    <Compile Include="导出Excel\ExportExcel.cs" />
-    <Compile Include="导出Excel\GridViewExport.cs" />
+    <Compile Include="Excel操作类\DataToExcel.cs" />
+    <Compile Include="Excel操作类\ExcelHelper.cs" />
+    <Compile Include="Excel操作类\ExportExcel.cs" />
+    <Compile Include="Excel操作类\GridViewExport.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Excel操作类\excel.txt" />
     <Content Include="FTP操作类\edtFTPnet.dll" />
     <Content Include="FTP操作类\FTP使用说明.txt" />
     <Content Include="异步线程\线程使用说明.txt" />
