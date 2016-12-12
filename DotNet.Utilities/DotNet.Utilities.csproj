@@ -94,6 +94,7 @@
   <ItemGroup>
     <Compile Include="Chart图形\Assistant.cs" />
     <Compile Include="Chart图形\OWCChart11.cs" />
+    <Compile Include="cmd\RunCmd.cs" />
     <Compile Include="异步线程\ManagedThreadPool.cs" />
     <Compile Include="日志\Log.cs" />
     <Compile Include="网络\HttpHelper.cs" />
