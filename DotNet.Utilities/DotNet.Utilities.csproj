@@ -31,6 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aliyun.OSS">
+      <HintPath>..\Pagkage\ali-oss\Aliyun.OSS.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>packages\Common.Logging.3.3.1\lib\net40\Common.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>packages\Common.Logging.Core.3.3.1\lib\net40\Common.Logging.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Excel, Version=1.5.0.0, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -48,6 +59,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\itextsharp.dll</HintPath>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\Pagkage\log4net\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Owc11, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -56,6 +70,10 @@
     <Reference Include="OWC10Chart, Version=1.0.2074.16784, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\OWC10Chart.dll</HintPath>
+    </Reference>
+    <Reference Include="Quartz, Version=2.4.1.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <HintPath>packages\Quartz.2.4.1\lib\net40\Quartz.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -77,6 +95,7 @@
     <Compile Include="Chart图形\Assistant.cs" />
     <Compile Include="Chart图形\OWCChart11.cs" />
     <Compile Include="异步线程\ManagedThreadPool.cs" />
+    <Compile Include="日志\Log.cs" />
     <Compile Include="网络\HttpHelper.cs" />
     <Compile Include="JSON操作\ConvertJson.cs" />
     <Compile Include="JS操作\JsHelper.cs" />
@@ -121,8 +140,11 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="计划任务\IntervalTask.cs" />
+    <Compile Include="计划任务\Quartz.NET\Job.cs" />
+    <Compile Include="计划任务\Quartz.NET\TestJob.cs" />
     <Compile Include="计划任务\TimerInfo.cs" />
     <Compile Include="配置文件操作类\ConfigHelper.cs" />
+    <Compile Include="阿里云OSS\Storage.cs" />
     <Compile Include="随机数类\BaseRandom.cs" />
     <Compile Include="随机数类\RandomHelper.cs" />
     <Compile Include="随机数类\RandomOperate.cs" />
@@ -142,11 +164,21 @@
     <Content Include="Excel操作类\excel.txt" />
     <Content Include="FTP操作类\edtFTPnet.dll" />
     <Content Include="FTP操作类\FTP使用说明.txt" />
+    <Content Include="H5-微信\AutoPayMusic.html" />
     <Content Include="异步线程\线程使用说明.txt" />
+    <Content Include="日志\日志使用说明.txt" />
     <Content Include="网站安全\使用说明.txt" />
+    <Content Include="计划任务\Quartz.NET\quartz_jobs.xml" />
+    <Content Include="计划任务\Quartz.NET\Qzuartz使用说明.txt" />
     <Content Include="计划任务\计划任务使用说明.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="job_scheduling_data_2_0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="日志\log4net.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
