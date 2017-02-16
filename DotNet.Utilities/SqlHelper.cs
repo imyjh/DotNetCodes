@@ -192,13 +192,13 @@ namespace DotNet.Utilities
             // commandBehaviour.CloseConnection will not work
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
+                SqlConnection conn = new SqlConnection(connectionString);
+                
                     PrepareCommand(cmd, conn, null, cmdType, cmdText, commandParameters);
                     SqlDataReader rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                     cmd.Parameters.Clear();
                     return rdr;
-                }
+      
             }
             catch
             {
