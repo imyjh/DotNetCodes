@@ -290,6 +290,38 @@ namespace DotNet.Utilities
                 return "";
             }
         }
+
+        public static string Md5Sum(string text)
+        {
+
+            //如果字符串为空，则返回
+            if (string.IsNullOrEmpty(text))
+            {
+                return "";
+            }
+            //返回MD5值的字符串表示             
+            return Md5Sum(System.Text.Encoding.UTF8.GetBytes(text));
+        }
+
+        public static string Md5Sum(byte[] bs)
+        {
+     
+            // 创建md5 对象  
+            System.Security.Cryptography.MD5 md5;
+            md5 = System.Security.Cryptography.MD5CryptoServiceProvider.Create();
+
+            // 生成16位的二进制校验码  
+            byte[] hashBytes = md5.ComputeHash(bs);
+
+            // 转为32位字符串  
+            string hashString = "";
+            for (int i = 0; i < hashBytes.Length; i++)
+            {
+                hashString += System.Convert.ToString(hashBytes[i], 16).PadLeft(2, '0');
+            }
+
+            return hashString.PadLeft(32, '0');
+        }
         #endregion
 
         #region Base64加密
