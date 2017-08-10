@@ -145,7 +145,8 @@
     <Compile Include="计划任务\Quartz.NET\TestJob.cs" />
     <Compile Include="计划任务\TimerInfo.cs" />
     <Compile Include="配置文件操作类\ConfigHelper.cs" />
-    <Compile Include="阿里云OSS\Storage.cs" />
+    <Compile Include="阿里云\Live\AliyunLive.cs" />
+    <Compile Include="阿里云\OSS\Storage.cs" />
     <Compile Include="随机数类\BaseRandom.cs" />
     <Compile Include="随机数类\RandomHelper.cs" />
     <Compile Include="随机数类\RandomOperate.cs" />
