@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace xftwl.Infrastructure.OSS
+namespace DotNet.Utilities.Aliyun.OSS
 {
     /// <summary>
     /// 阿里云存储
