@@ -150,7 +150,7 @@
     <Compile Include="随机数类\BaseRandom.cs" />
     <Compile Include="随机数类\RandomHelper.cs" />
     <Compile Include="随机数类\RandomOperate.cs" />
-    <Compile Include="验证码\YZMHelper.cs" />
+    <Compile Include="验证码\CAPTCHA.cs" />
     <Compile Include="上传下载\DownLoadHelper.cs" />
     <Compile Include="上传下载\FileDown.cs" />
     <Compile Include="上传下载\FileUp.cs" />
