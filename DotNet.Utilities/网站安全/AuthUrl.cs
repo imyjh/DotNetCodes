@@ -32,7 +32,7 @@ namespace DotNet.Utilities.网站安全
             string s = string.Format("{0}-{1}-{2}-{3}-{4}", Url, timestamp, 0, 0, privateKey);
 
             //如果手机时间与当前服务器时间相差5分钟，鉴权失败
-            if (ValidateDateTime(timestamp))
+            if (!ValidateDateTime(timestamp))
             {
                 return false;
             }
@@ -51,12 +51,13 @@ namespace DotNet.Utilities.网站安全
         /// <returns></returns>
         public static bool ValidateDateTime(string timestamp)
         {
-            DateTime dtStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
-            long lTime = long.Parse(timestamp);
-            TimeSpan toNow = new TimeSpan(lTime);
-            DateTime clientTime = dtStart.Add(toNow);
 
-            if ((DateTime.Now - clientTime).Minutes > 10 || (DateTime.Now - clientTime).Minutes < 10)
+            long jsTimeStamp = Convert.ToInt64(timestamp);
+            System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1)); // 当地时区
+            DateTime clientTime = startTime.AddMilliseconds(jsTimeStamp);
+
+
+            if (System.Math.Abs((DateTime.Now - clientTime).TotalMinutes) > 10)
             {
                 return false;
             }
