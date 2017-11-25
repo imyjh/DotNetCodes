@@ -52,11 +52,11 @@ namespace DotNet.Utilities.网站安全
         public static bool ValidateDateTime(string timestamp)
         {
             DateTime dtStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
-            long lTime = long.Parse(timestamp + "0000000");
+            long lTime = long.Parse(timestamp);
             TimeSpan toNow = new TimeSpan(lTime);
             DateTime clientTime = dtStart.Add(toNow);
 
-            if ((DateTime.Now - clientTime).Minutes > 10 || (DateTime.Now - clientTime).Minutes > 10)
+            if ((DateTime.Now - clientTime).Minutes > 10 || (DateTime.Now - clientTime).Minutes < 10)
             {
                 return false;
             }
