@@ -96,6 +96,7 @@
     <Compile Include="Chart图形\OWCChart11.cs" />
     <Compile Include="cmd\RunCmd.cs" />
     <Compile Include="异步线程\ManagedThreadPool.cs" />
+    <Compile Include="数据库操作\PetaPoco\DbHelper.cs" />
     <Compile Include="数据库操作\PetaPoco\Generated\Database.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
