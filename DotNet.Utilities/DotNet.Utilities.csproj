@@ -156,6 +156,7 @@
     <Compile Include="阿里云\Live\AliyunLive.cs" />
     <Compile Include="阿里云\OSS\Storage.cs" />
     <Compile Include="随机数类\BaseRandom.cs" />
+    <Compile Include="随机数类\RedPacket.cs" />
     <Compile Include="随机数类\RandomHelper.cs" />
     <Compile Include="随机数类\RandomOperate.cs" />
     <Compile Include="验证码\CAPTCHA.cs" />

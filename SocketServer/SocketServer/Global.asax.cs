@@ -19,7 +19,7 @@ namespace SocketServer
 
     public class MvcApplication : System.Web.HttpApplication
     {
-        WebSocketServer appServer ;
+        CustomServer appServer ;
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -29,7 +29,10 @@ namespace SocketServer
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            appServer = new WebSocketServer();
+            
+            
+
+            appServer = new CustomServer();
             var SocketPort = System.Web.Configuration.WebConfigurationManager.AppSettings["SocketPort"].ToString();
             int port = Convert.ToInt32(SocketPort);
             if (!appServer.Setup(2000))
@@ -43,21 +46,30 @@ namespace SocketServer
                 return;
             }
 
-            //客户端连接
-            appServer.NewSessionConnected += appServer_NewSessionConnected;
+           
+
+          
+            //客户端连接 
+            appServer.NewSessionConnected += AppServer_NewSessionConnected;
             //客户端接收消息
-            appServer.NewMessageReceived += appServer_NewMessageReceived;
-            //客户端关闭
-            appServer.SessionClosed += appServer_SessionClosed;
+            appServer.NewMessageReceived += AppServer_NewMessageReceived;
+            //客户端关闭 
+            appServer.SessionClosed += AppServer_SessionClosed;
             
         }
 
-        void appServer_SessionClosed(WebSocketSession session, SuperSocket.SocketBase.CloseReason value)
+        private void AppServer_SessionClosed(CustomSession session, SuperSocket.SocketBase.CloseReason value)
         {
             session.Close();
         }
 
-        void appServer_NewMessageReceived(WebSocketSession session, string value)
+        private void AppServer_NewSessionConnected(CustomSession session)
+        {
+            session.Send("客户端：" + session.SessionID + DateTime.Now + "己上线");
+
+        }
+
+        private void AppServer_NewMessageReceived(CustomSession session, string value)
         {
             //单条推送
             // session.Send(DateTime.Now.ToLocalTime()+" 客户端" +session.SessionID +":"+ value);
@@ -68,7 +80,7 @@ namespace SocketServer
             //{
             //    s.Send(data, 0, data.Length);
             //}
-            
+
             //推送消息给所有客户端
             foreach (var s in appServer.GetAllSessions())
             {
@@ -76,11 +88,10 @@ namespace SocketServer
             }
         }
 
-        void appServer_NewSessionConnected(WebSocketSession session)
-        {
-           
-            session.Send("客户端：" + session.SessionID + "己上线");
-        }
+       
+       
+
+         
 
        
     }

@@ -8,8 +8,5 @@
 
 该项目一定不会出现在github上，我们只为国人服务，国内网络会更加高效
 
-源码托管地址目前只有这一个http://git.oschina.net/kuiyu/dotnetcodes
-
-如果你发现了网上类似的项目，说明你遇到了个装逼的
-
-
+源码托管地址目前只有这一个https://gitee.com/kuiyu/dotnetcodes
+ 
