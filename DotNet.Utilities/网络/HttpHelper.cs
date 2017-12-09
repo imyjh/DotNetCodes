@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.IO.Compression;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
+using System.Net.Http;
 
 namespace DotNet.Utilities
 {
@@ -18,6 +19,19 @@ namespace DotNet.Utilities
     /// </summary>
     public class HttpHelper
     {
+
+        #region 推荐的模拟POST请求,需要.net4.5,并引用System.Net.Http.dll;
+        public static string Post(string Url,List<KeyValuePair<string,string>>paramList)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.MaxResponseContentBufferSize = 256000;
+            /*httpClient.DefaultRequestHeaders.Add("user-agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36");*/
+            HttpResponseMessage response = httpClient.PostAsync(new Uri(Url), new FormUrlEncodedContent(paramList)).Result;
+            var result = response.Content.ReadAsStringAsync().Result;
+            return result;
+        }
+        #endregion
+
         #region 模拟GET
         /// <summary>
         /// GET请求
