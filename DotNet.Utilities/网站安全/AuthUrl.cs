@@ -116,10 +116,13 @@ namespace DotNet.Utilities.网站安全
         }
 
 
-        static string ConvertDateTime(System.DateTime time)
+        static string ConvertDateTime(System.DateTime dt)
         {
-            System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1));
-            return Convert.ToString((int)(time - startTime).TotalSeconds);
+            System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1)); // 当地时区
+
+            long timeStamp = (long)(dt - startTime).TotalMilliseconds; // 相差毫秒数
+
+            return timeStamp.ToString();
         }
     }
 }
